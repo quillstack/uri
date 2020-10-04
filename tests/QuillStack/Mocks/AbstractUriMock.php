@@ -28,5 +28,4 @@ abstract class AbstractUriMock
     {
         return $this->container->get(UriFactory::class)->createUri(static::URI);
     }
-
 }
