@@ -153,7 +153,16 @@ class UriFactory implements UriFactoryInterface
      */
     private function getQueryAndFragment(string $queryWithFragment): array
     {
-        return explode(self::FRAGMENT_DELIMITER, $queryWithFragment);
+        $hashArray = explode(self::FRAGMENT_DELIMITER, $queryWithFragment);
+
+        if (isset($hashArray[1])) {
+            return $hashArray;
+        }
+
+        return [
+            $queryWithFragment,
+            '',
+        ];
     }
 
     /**

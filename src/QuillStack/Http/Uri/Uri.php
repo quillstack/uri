@@ -268,8 +268,10 @@ final class Uri implements UriInterface
             $uri .= ":{$this->port}";
         }
 
+        $uri .= '/';
+
         if ($this->path !== '/') {
-            $uri .= "/{$this->path}";
+            $uri .= $this->path;
         }
 
         if ($this->query) {
