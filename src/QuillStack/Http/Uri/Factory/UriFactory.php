@@ -30,6 +30,11 @@ class UriFactory implements UriFactoryInterface
     /**
      * @var string
      */
+    public const FRAGMENT_DELIMITER = '#';
+
+    /**
+     * @var string
+     */
     public const DEFAULT_QUERY = '';
 
     /**
@@ -75,12 +80,12 @@ class UriFactory implements UriFactoryInterface
 
         $userInfoHostPort = $this->getUserInfoHostPort($slashArray);
         $scheme = $this->getScheme($colonArray);
-
         [$userInfo, $authority] = $this->getUserInfoAndAuthority($userInfoHostPort);
-        [$host, $port] = $this->getHostAndPort($userInfoHostPort, $scheme);
-        [$path, $query] = $this->getPathAndQuery($slashArray);
+        [$host, $port] = $this->getHostAndPort($authority, $scheme);
+        [$path, $queryWithFragment] = $this->getPathAndQueryWithFragment($slashArray);
+        [$query, $fragment] = $this->getQueryAndFragment($queryWithFragment);
 
-        return new Uri($scheme, $authority, $userInfo, $host, $port, $query, $path);
+        return new Uri($scheme, $authority, $userInfo, $host, $port, $query, $path, $fragment);
     }
 
     /**
@@ -127,7 +132,7 @@ class UriFactory implements UriFactoryInterface
      *
      * @return array
      */
-    private function getPathAndQuery(array $slashArray): array
+    private function getPathAndQueryWithFragment(array $slashArray): array
     {
         $path = $slashArray[3] !== '' ? $slashArray[3] : self::DEFAULT_PATH;
         $query = self::DEFAULT_QUERY;
@@ -139,6 +144,16 @@ class UriFactory implements UriFactoryInterface
         }
 
         return [$path, $query];
+    }
+
+    /**
+     * @param string $queryWithFragment
+     *
+     * @return array
+     */
+    private function getQueryAndFragment(string $queryWithFragment): array
+    {
+        return explode(self::FRAGMENT_DELIMITER, $queryWithFragment);
     }
 
     /**

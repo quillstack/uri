@@ -74,7 +74,7 @@ final class Uri implements UriInterface
     /**
      * @var string
      */
-    private string $fragment = '';
+    private string $fragment;
 
     /**
      * @param string $scheme
@@ -84,6 +84,7 @@ final class Uri implements UriInterface
      * @param int $port
      * @param string $query
      * @param string $path
+     * @param string $fragment
      */
     public function __construct(
         string $scheme,
@@ -92,7 +93,8 @@ final class Uri implements UriInterface
         string $host,
         int $port,
         string $query,
-        string $path
+        string $path,
+        string $fragment
     ) {
         $this->scheme = $scheme;
         $this->authority = $authority;
@@ -101,6 +103,7 @@ final class Uri implements UriInterface
         $this->port = $port;
         $this->query = $query;
         $this->path = $path;
+        $this->fragment = $fragment;
     }
 
     /**
@@ -124,7 +127,7 @@ final class Uri implements UriInterface
      */
     public function getUserInfo()
     {
-        return $this->authority;
+        return $this->userInfo;
     }
 
     /**
