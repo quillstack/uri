@@ -6,7 +6,6 @@ namespace QuillStack\Uri;
 
 use PHPUnit\Framework\TestCase;
 use QuillStack\Http\Uri\Factory\Exceptions\UnknownSchemeException;
-use QuillStack\Mocks\Localhost\MockNoHostException;
 use QuillStack\Mocks\Localhost\MockUnknownSchemeException;
 
 final class UnknownSchemeExceptionTest extends TestCase

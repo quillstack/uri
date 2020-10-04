@@ -134,7 +134,7 @@ class UriFactory implements UriFactoryInterface
      */
     private function getPathAndQueryWithFragment(array $slashArray): array
     {
-        $path = $slashArray[3] !== '' ? $slashArray[3] : self::DEFAULT_PATH;
+        $path = $slashArray[3] !== '' ? $this->implodePath($slashArray) : self::DEFAULT_PATH;
         $query = self::DEFAULT_QUERY;
 
         if (strstr($path, self::QUERY_STRING_DELIMITER)) {
@@ -144,6 +144,16 @@ class UriFactory implements UriFactoryInterface
         }
 
         return [$path, $query];
+    }
+
+    /**
+     * @param array $slashArray
+     *
+     * @return string
+     */
+    private function implodePath(array $slashArray): string
+    {
+        return implode('/', array_slice($slashArray, 3));
     }
 
     /**
