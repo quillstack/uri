@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "QuillStack\\Http\\Request\\": "src/QuillStack/Http/Uri/",
+            "QuillStack\\Http\\Uri\\": "src/QuillStack/Http/Uri/",
             "QuillStack\\Mocks\\": "tests/QuillStack/Mocks/"
         }
     },
