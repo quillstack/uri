@@ -34,5 +34,7 @@ final class UriHostValidator implements ValidatorInterface
         if (!isset($this->slashArray[3])) {
             throw new UnknownHostException('Cannot determine the host from the URI');
         }
+
+        return true;
     }
 }
