@@ -1,0 +1,30 @@
+{
+    "name": "quillstack/uri",
+    "description": "The simple implementation of PSR-7: UriInterface.\n\n",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://quillstack.com/uri",
+    "authors": [
+        {
+            "name": "Radek Ziemniewicz",
+            "email": "open-source@quillstack.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "psr/http-message": "^1.0",
+        "quillstack/validator-interface": "^1.0",
+        "psr/http-factory": "^1.0",
+        "quillstack/di": "^1.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "QuillStack\\Http\\Uri\\": "src/QuillStack/Http/Uri/",
+            "QuillStack\\Mocks\\": "tests/QuillStack/Mocks/"
+        }
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.1",
+        "phpunit/phpunit": "^9"
+    }
+}
