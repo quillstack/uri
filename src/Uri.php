@@ -37,8 +37,8 @@ class Uri implements UriInterface
     ];
 
     public function __construct(
-        private string $scheme,
-        private string $authority,
+        private string $scheme = '',
+        private string $authority = '',
         private string $userInfo = '',
         private string $host = '',
         private ?int $port = null,
