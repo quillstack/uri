@@ -6,7 +6,7 @@ namespace Quillstack\Uri;
 
 use Psr\Http\Message\UriInterface;
 
-final class Uri implements UriInterface
+class Uri implements UriInterface
 {
     /**
      * @var int
@@ -36,74 +36,17 @@ final class Uri implements UriInterface
         self::DEFAULT_PORT_HTTPS,
     ];
 
-    /**
-     * @var string
-     */
-    private string $scheme;
-
-    /**
-     * @var string
-     */
-    private string $authority;
-
-    /**
-     * @var string
-     */
-    private string $userInfo = '';
-
-    /**
-     * @var string
-     */
-    private string $host = '';
-
-    /**
-     * @var int|null
-     */
-    private ?int $port;
-
-    /**
-     * @var string
-     */
-    private string $query;
-
-    /**
-     * @var string
-     */
-    private string $path;
-
-    /**
-     * @var string
-     */
-    private string $fragment;
-
-    /**
-     * @param string $scheme
-     * @param string $authority
-     * @param string $userInfo
-     * @param string $host
-     * @param int $port
-     * @param string $query
-     * @param string $path
-     * @param string $fragment
-     */
     public function __construct(
-        string $scheme,
-        string $authority,
-        string $userInfo,
-        string $host,
-        int $port,
-        string $query,
-        string $path,
-        string $fragment
+        private string $scheme = '',
+        private string $authority = '',
+        private string $userInfo = '',
+        private string $host = '',
+        private ?int $port = null,
+        private string $query = '',
+        private string $path = '',
+        private string $fragment = ''
     ) {
-        $this->scheme = $scheme;
-        $this->authority = $authority;
-        $this->userInfo = $userInfo;
-        $this->host = $host;
-        $this->port = $port;
-        $this->query = $query;
-        $this->path = $path;
-        $this->fragment = $fragment;
+        //
     }
 
     /**
