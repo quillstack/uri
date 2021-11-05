@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace QuillStack\Mocks\Localhost;
+namespace Quillstack\Uri\Tests\Mocks\Localhost;
 
-use QuillStack\Mocks\AbstractUriMock;
+use Quillstack\Uri\Tests\Mocks\AbstractUriMock;
 
 final class MockFullLocalhost extends AbstractUriMock
 {
     public const SCHEME = 'http';
     public const HOST = '127.0.0.1';
-    public const PORT = '8080';
+    public const PORT = 8080;
     public const AUTHORITY = self::HOST . ':' . self::PORT;
     public const USER = 'user';
     public const PASS = 'pass';

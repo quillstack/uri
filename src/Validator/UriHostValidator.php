@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace QuillStack\Http\Uri\Validator;
+namespace Quillstack\Uri\Validator;
 
-use QuillStack\Http\Uri\Factory\Exceptions\UnknownHostException;
-use QuillStack\ValidatorInterface;
+use Quillstack\Uri\Factory\Exceptions\UnknownHostException;
+use Quillstack\ValidatorInterface\ValidatorInterface;
 
-final class UriHostValidator implements ValidatorInterface
+class UriHostValidator implements ValidatorInterface
 {
     /**
      * @var array

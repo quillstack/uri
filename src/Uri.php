@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace QuillStack\Http\Uri;
+namespace Quillstack\Uri;
 
 use Psr\Http\Message\UriInterface;
 

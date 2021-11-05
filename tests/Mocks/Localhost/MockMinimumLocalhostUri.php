@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace QuillStack\Mocks\Localhost;
+namespace Quillstack\Uri\Tests\Mocks\Localhost;
 
-use QuillStack\Mocks\AbstractUriMock;
+use Quillstack\Uri\Tests\Mocks\AbstractUriMock;
 
-final class MockMinimumLocalhostUri extends AbstractUriMock
+class MockMinimumLocalhostUri extends AbstractUriMock
 {
     public const SCHEME = 'http';
     public const HOST = '127.0.0.1';

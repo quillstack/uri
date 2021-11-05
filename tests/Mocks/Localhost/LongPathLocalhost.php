@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace QuillStack\Mocks\Localhost;
+namespace Quillstack\Uri\Tests\Mocks\Localhost;
 
-use QuillStack\Mocks\AbstractUriMock;
+use Quillstack\Uri\Tests\Mocks\AbstractUriMock;
 
 final class LongPathLocalhost extends AbstractUriMock
 {

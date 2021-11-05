@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace QuillStack\Http\Uri\Factory;
+namespace Quillstack\Uri\Factory;
 
 use Psr\Http\Message\UriFactoryInterface;
 use Psr\Http\Message\UriInterface;
-use QuillStack\Http\Uri\Uri;
-use QuillStack\Http\Uri\Validator\UriHostValidator;
-use QuillStack\Http\Uri\Validator\UriSchemeValidator;
+use Quillstack\Uri\Uri;
+use Quillstack\Uri\Validator\UriHostValidator;
+use Quillstack\Uri\Validator\UriSchemeValidator;
 
 class UriFactory implements UriFactoryInterface
 {

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace QuillStack\Http\Uri\Validator;
+namespace Quillstack\Uri\Validator;
 
-use QuillStack\Http\Uri\Factory\Exceptions\UnknownSchemeException;
-use QuillStack\Http\Uri\Uri;
-use QuillStack\ValidatorInterface;
+use Quillstack\Uri\Factory\Exceptions\UnknownSchemeException;
+use Quillstack\Uri\Uri;
+use Quillstack\ValidatorInterface\ValidatorInterface;
 
-final class UriSchemeValidator implements ValidatorInterface
+class UriSchemeValidator implements ValidatorInterface
 {
     /**
      * @var array
