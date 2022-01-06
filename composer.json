@@ -30,6 +30,6 @@
         }
     },
     "require-dev": {
-        "quillstack/unit-tests": "^0.0.7"
+        "quillstack/unit-tests": "^0.2"
     }
 }

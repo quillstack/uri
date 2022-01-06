@@ -19,7 +19,7 @@ The simple implementation of PSR-7: UriInterface.
 Run tests using a command:
 
 ```
-phpdbg -qrr vendor/bin/phpunit
+phpdbg -qrr ./vendor/bin/unit-tests
 ```
 
 ### Docker
