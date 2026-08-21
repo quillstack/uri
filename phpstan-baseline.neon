@@ -1,0 +1,97 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Constant Quillstack\\Uri\\Factory\\UriFactory\:\:SCHEME_PORTS type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Factory/UriFactory.php
+
+		-
+			message: '#^Method Quillstack\\Uri\\Factory\\UriFactory\:\:getAtArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Factory/UriFactory.php
+
+		-
+			message: '#^Method Quillstack\\Uri\\Factory\\UriFactory\:\:getColonArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Factory/UriFactory.php
+
+		-
+			message: '#^Method Quillstack\\Uri\\Factory\\UriFactory\:\:getHostAndPort\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Factory/UriFactory.php
+
+		-
+			message: '#^Method Quillstack\\Uri\\Factory\\UriFactory\:\:getHostArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Factory/UriFactory.php
+
+		-
+			message: '#^Method Quillstack\\Uri\\Factory\\UriFactory\:\:getPathAndQueryWithFragment\(\) has parameter \$slashArray with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Factory/UriFactory.php
+
+		-
+			message: '#^Method Quillstack\\Uri\\Factory\\UriFactory\:\:getPathAndQueryWithFragment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Factory/UriFactory.php
+
+		-
+			message: '#^Method Quillstack\\Uri\\Factory\\UriFactory\:\:getQueryAndFragment\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Factory/UriFactory.php
+
+		-
+			message: '#^Method Quillstack\\Uri\\Factory\\UriFactory\:\:getScheme\(\) has parameter \$colonArray with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Factory/UriFactory.php
+
+		-
+			message: '#^Method Quillstack\\Uri\\Factory\\UriFactory\:\:getSlashArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Factory/UriFactory.php
+
+		-
+			message: '#^Method Quillstack\\Uri\\Factory\\UriFactory\:\:getUserInfoHostPort\(\) has parameter \$slashArray with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Factory/UriFactory.php
+
+		-
+			message: '#^Method Quillstack\\Uri\\Factory\\UriFactory\:\:implodePath\(\) has parameter \$slashArray with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Factory/UriFactory.php
+
+		-
+			message: '#^Constant Quillstack\\Uri\\Uri\:\:DEFAULT_PORTS type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Uri.php
+
+		-
+			message: '#^Method Quillstack\\Uri\\Validator\\UriHostValidator\:\:setSlashArray\(\) has parameter \$slashArray with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Validator/UriHostValidator.php
+
+		-
+			message: '#^Property Quillstack\\Uri\\Validator\\UriHostValidator\:\:\$slashArray type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Validator/UriHostValidator.php
+
+		-
+			message: '#^Constant Quillstack\\Uri\\Validator\\UriSchemeValidator\:\:AVAILABLE_SCHEMES type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Validator/UriSchemeValidator.php

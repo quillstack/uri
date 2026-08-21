@@ -1,6 +1,6 @@
 # Quillstack URI
 
-[![Build Status](https://app.travis-ci.com/quillstack/uri.svg?branch=main)](https://app.travis-ci.com/quillstack/uri)
+[![Tests](https://github.com/quillstack/uri/actions/workflows/tests.yml/badge.svg)](https://github.com/quillstack/uri/actions/workflows/tests.yml)
 [![Downloads](https://img.shields.io/packagist/dt/quillstack/uri.svg)](https://packagist.org/packages/quillstack/uri)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=quillstack_uri&metric=coverage)](https://sonarcloud.io/summary/new_code?id=quillstack_uri)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=quillstack_uri&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=quillstack_uri)
