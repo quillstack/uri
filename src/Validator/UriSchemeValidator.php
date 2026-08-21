@@ -11,7 +11,7 @@ use Quillstack\ValidatorInterface\ValidatorInterface;
 class UriSchemeValidator implements ValidatorInterface
 {
     /**
-     * @var array
+     * @var string[]
      */
     private const AVAILABLE_SCHEMES = [
         Uri::SCHEME_HTTP,

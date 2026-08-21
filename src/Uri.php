@@ -29,7 +29,7 @@ class Uri implements UriInterface
     public const SCHEME_HTTPS = 'https';
 
     /**
-     * @var array
+     * @var int[]
      */
     public const DEFAULT_PORTS = [
         self::DEFAULT_PORT_HTTP,

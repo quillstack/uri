@@ -10,12 +10,12 @@ use Quillstack\ValidatorInterface\ValidatorInterface;
 class UriHostValidator implements ValidatorInterface
 {
     /**
-     * @var array
+     * @var string[]
      */
     private array $slashArray;
 
     /**
-     * @param array $slashArray
+     * @param string[] $slashArray
      *
      * @return UriHostValidator
      */

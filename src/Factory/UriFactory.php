@@ -53,7 +53,7 @@ class UriFactory implements UriFactoryInterface
     private const SLASH_DELIMITER = '/';
 
     /**
-     * @var array
+     * @var array<string, int>
      */
     private const SCHEME_PORTS = [
         Uri::SCHEME_HTTPS => Uri::DEFAULT_PORT_HTTPS,
@@ -108,7 +108,7 @@ class UriFactory implements UriFactoryInterface
      * @param string $userInfoHostPort
      * @param string $scheme
      *
-     * @return array
+     * @return array{0: string, 1: int}
      */
     private function getHostAndPort(string $userInfoHostPort, string $scheme): array
     {
@@ -128,9 +128,9 @@ class UriFactory implements UriFactoryInterface
     }
 
     /**
-     * @param array $slashArray
+     * @param string[] $slashArray
      *
-     * @return array
+     * @return string[]
      */
     private function getPathAndQueryWithFragment(array $slashArray): array
     {
@@ -147,7 +147,7 @@ class UriFactory implements UriFactoryInterface
     }
 
     /**
-     * @param array $slashArray
+     * @param string[] $slashArray
      *
      * @return string
      */
@@ -159,7 +159,7 @@ class UriFactory implements UriFactoryInterface
     /**
      * @param string $queryWithFragment
      *
-     * @return array
+     * @return array{0: string, 1: string}
      */
     private function getQueryAndFragment(string $queryWithFragment): array
     {
@@ -178,7 +178,7 @@ class UriFactory implements UriFactoryInterface
     /**
      * @param string $uri
      *
-     * @return array
+     * @return string[]
      */
     private function getSlashArray(string $uri): array
     {
@@ -191,7 +191,7 @@ class UriFactory implements UriFactoryInterface
     /**
      * @param string $uri
      *
-     * @return array
+     * @return string[]
      */
     private function getColonArray(string $uri): array
     {
@@ -199,7 +199,7 @@ class UriFactory implements UriFactoryInterface
     }
 
     /**
-     * @param array $colonArray
+     * @param string[] $colonArray
      *
      * @return string
      */
@@ -209,7 +209,7 @@ class UriFactory implements UriFactoryInterface
     }
 
     /**
-     * @param array $slashArray
+     * @param string[] $slashArray
      *
      * @return string
      */
@@ -221,7 +221,7 @@ class UriFactory implements UriFactoryInterface
     /**
      * @param string $userInfoHostPort
      *
-     * @return array
+     * @return string[]
      */
     private function getAtArray(string $userInfoHostPort): array
     {
@@ -235,7 +235,7 @@ class UriFactory implements UriFactoryInterface
     /**
      * @param string $host
      *
-     * @return array
+     * @return string[]
      */
     private function getHostArray(string $host): array
     {
