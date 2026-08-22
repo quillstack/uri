@@ -62,7 +62,18 @@ class Uri implements UriInterface
      */
     public function getAuthority()
     {
-        return $this->authority;
+        // PSR-7 spells this `[user-info@]host[:port]`, and says a port which is the standard
+        // one for the scheme does not belong in it. It used to be the host and port alone,
+        // so anything rebuilding a URI from its parts lost the credentials.
+        if ($this->host === '') {
+            return '';
+        }
+
+        $authority = $this->userInfo === '' ? '' : "{$this->userInfo}@";
+        $authority .= $this->host;
+        $port = $this->getPort();
+
+        return $port === null ? $authority : "{$authority}:{$port}";
     }
 
     /**
@@ -86,7 +97,15 @@ class Uri implements UriInterface
      */
     public function getPort()
     {
-        return $this->port;
+        // Saying `https://example.com:443` says nothing `https://example.com` does not, so
+        // PSR-7 asks for nothing back where the port is the usual one for the scheme.
+        $standard = match ($this->scheme) {
+            self::SCHEME_HTTP => self::DEFAULT_PORT_HTTP,
+            self::SCHEME_HTTPS => self::DEFAULT_PORT_HTTPS,
+            default => null,
+        };
+
+        return $this->port === $standard ? null : $this->port;
     }
 
     /**
@@ -196,25 +215,16 @@ class Uri implements UriInterface
     public function __toString()
     {
         $uri = "{$this->scheme}://";
+        $authority = $this->getAuthority();
 
-        if ($this->userInfo) {
-            $uri .= "{$this->userInfo}@";
-        }
+        $uri .= $authority !== '' ? $authority : $this->host;
 
-        $uri .= $this->host;
-
-        $wrongHttp = $this->port === self::DEFAULT_PORT_HTTP && $this->scheme !== self::SCHEME_HTTP;
-        $wrongHttps = $this->port === self::DEFAULT_PORT_HTTPS && $this->scheme !== self::SCHEME_HTTPS;
-        $noDefault = !in_array($this->port, self::DEFAULT_PORTS, true);
-
-        if ($wrongHttp || $wrongHttps | $noDefault) {
-            $uri .= ":{$this->port}";
-        }
-
-        $uri .= '/';
-
-        if ($this->path !== '/') {
-            $uri .= $this->path;
+        // A path beside an authority has to be rooted, whether or not the one it was given
+        // was: `//users/43` names a host called `users`, which is a different request.
+        if ($this->path !== '') {
+            $uri .= str_starts_with($this->path, '/') ? $this->path : '/' . $this->path;
+        } else {
+            $uri .= '/';
         }
 
         if ($this->query) {

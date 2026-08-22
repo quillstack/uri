@@ -134,7 +134,8 @@ class UriFactory implements UriFactoryInterface
      */
     private function getPathAndQueryWithFragment(array $slashArray): array
     {
-        $path = $slashArray[3] !== '' ? $this->implodePath($slashArray) : self::DEFAULT_PATH;
+        // Rooted, because that is what it was in the string it came out of.
+        $path = $slashArray[3] !== '' ? '/' . $this->implodePath($slashArray) : self::DEFAULT_PATH;
         $query = self::DEFAULT_QUERY;
 
         if (strstr($path, self::QUERY_STRING_DELIMITER)) {

@@ -108,6 +108,13 @@ class FullLocalhostUriTest
 
         $this->assertEqual->equal(MockFullLocalhost::PATH, $this->uri->getPath());
         $this->assertEqual->equal('new-path', $uri->getPath());
+
+        // A path set without a leading slash is kept as it was given, and rooted when the
+        // URI is written out — `//new-path` would name a host called `new-path`.
+        $this->assertEqual->equal(
+            'http://user:pass@127.0.0.1:8080/new-path?query=string#fragment',
+            (string) $uri
+        );
     }
 
     public function testWithQuery()
