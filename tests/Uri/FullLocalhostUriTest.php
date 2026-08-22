@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Quillstack\Uri\Tests\Uri;
 
 use Psr\Http\Message\UriInterface;
-use Quillstack\Uri\Tests\Mocks\Localhost\MockFullLocalhost;
 use Quillstack\UnitTests\AssertEqual;
+use Quillstack\Uri\Tests\Mocks\Localhost\MockFullLocalhost;
 
 class FullLocalhostUriTest
 {

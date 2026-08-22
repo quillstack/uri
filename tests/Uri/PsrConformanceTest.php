@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Quillstack\Uri\Tests\Uri;
 
-use Quillstack\Uri\Factory\UriFactory;
 use Quillstack\UnitTests\AssertEqual;
 use Quillstack\UnitTests\Types\AssertBoolean;
+use Quillstack\Uri\Factory\UriFactory;
 
 /**
  * The parts of PSR-7 which are easy to get subtly wrong, and which this package did.
