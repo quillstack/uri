@@ -36,9 +36,13 @@ class Uri implements UriInterface
         self::DEFAULT_PORT_HTTPS,
     ];
 
+    /**
+     * The authority is not one of these: it is `[user-info@]host[:port]`, so keeping a copy
+     * beside the three parts it is made of is a second answer waiting to disagree with the
+     * first.
+     */
     public function __construct(
         private string $scheme = '',
-        private string $authority = '',
         private string $userInfo = '',
         private string $host = '',
         private ?int $port = null,

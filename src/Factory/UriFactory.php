@@ -85,7 +85,7 @@ class UriFactory implements UriFactoryInterface
         [$path, $queryWithFragment] = $this->getPathAndQueryWithFragment($slashArray);
         [$query, $fragment] = $this->getQueryAndFragment($queryWithFragment);
 
-        return new Uri($scheme, $authority, $userInfo, $host, $port, $query, $path, $fragment);
+        return new Uri($scheme, $userInfo, $host, $port, $query, $path, $fragment);
     }
 
     /**
