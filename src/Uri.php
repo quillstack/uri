@@ -56,7 +56,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function getScheme()
+    public function getScheme(): string
     {
         return $this->scheme;
     }
@@ -64,7 +64,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function getAuthority()
+    public function getAuthority(): string
     {
         // PSR-7 spells this `[user-info@]host[:port]`, and says a port which is the standard
         // one for the scheme does not belong in it. It used to be the host and port alone,
@@ -83,7 +83,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function getUserInfo()
+    public function getUserInfo(): string
     {
         return $this->userInfo;
     }
@@ -91,7 +91,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function getHost()
+    public function getHost(): string
     {
         return $this->host;
     }
@@ -99,7 +99,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function getPort()
+    public function getPort(): ?int
     {
         // Saying `https://example.com:443` says nothing `https://example.com` does not, so
         // PSR-7 asks for nothing back where the port is the usual one for the scheme.
@@ -115,7 +115,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function getPath()
+    public function getPath(): string
     {
         return $this->path;
     }
@@ -123,7 +123,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function getQuery()
+    public function getQuery(): string
     {
         return $this->query;
     }
@@ -131,7 +131,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function getFragment()
+    public function getFragment(): string
     {
         return $this->fragment;
     }
@@ -139,7 +139,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function withScheme($scheme)
+    public function withScheme($scheme): UriInterface
     {
         $new = clone $this;
         $new->scheme = $scheme;
@@ -150,7 +150,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function withUserInfo($user, $password = null)
+    public function withUserInfo($user, $password = null): UriInterface
     {
         $new = clone $this;
         $new->userInfo = $password ? "{$user}:{$password}" : $user;
@@ -161,7 +161,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function withHost($host)
+    public function withHost($host): UriInterface
     {
         $new = clone $this;
         $new->host = $host;
@@ -172,7 +172,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function withPort($port)
+    public function withPort($port): UriInterface
     {
         $new = clone $this;
         $new->port = $port;
@@ -183,7 +183,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function withPath($path)
+    public function withPath($path): UriInterface
     {
         $new = clone $this;
         $new->path = $path;
@@ -194,7 +194,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function withQuery($query)
+    public function withQuery($query): UriInterface
     {
         $new = clone $this;
         $new->query = $query;
@@ -205,7 +205,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function withFragment($fragment)
+    public function withFragment($fragment): UriInterface
     {
         $new = clone $this;
         $new->fragment = $fragment;
@@ -216,7 +216,7 @@ class Uri implements UriInterface
     /**
      * {@inheritDoc}
      */
-    public function __toString()
+    public function __toString(): string
     {
         $uri = "{$this->scheme}://";
         $authority = $this->getAuthority();
