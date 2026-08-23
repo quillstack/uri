@@ -96,4 +96,43 @@ class PsrConformanceTest
             $this->assertEqual->equal($uri, (string) $this->uriFactory->createUri($uri));
         }
     }
+
+    /**
+     * A URI which stops at the host is a URI. It used to be refused outright, because this is
+     * taken apart by splitting on slashes and there were only two — so the host could not be
+     * found at all.
+     */
+    public function aUriMayStopAtTheHost()
+    {
+        foreach ([
+            'https://example.org' => 'https://example.org/',
+            'https://example.org?a=1' => 'https://example.org/?a=1',
+            'https://example.org#top' => 'https://example.org/#top',
+            'https://user:pass@example.org:8443' => 'https://user:pass@example.org:8443/',
+        ] as $given => $expected) {
+            $uri = $this->uriFactory->createUri($given);
+
+            $this->assertEqual->equal('example.org', $uri->getHost());
+            $this->assertEqual->equal($expected, (string) $uri);
+        }
+    }
+
+    /**
+     * The path ends at whichever comes first. A fragment written without a query used to end
+     * up on the end of the path, naming a directory nobody has.
+     */
+    public function thePathEndsAtTheQueryOrTheFragment()
+    {
+        $uri = $this->uriFactory->createUri('https://example.org/a/b#top');
+
+        $this->assertEqual->equal('/a/b', $uri->getPath());
+        $this->assertEqual->equal('', $uri->getQuery());
+        $this->assertEqual->equal('top', $uri->getFragment());
+
+        $both = $this->uriFactory->createUri('https://example.org/a?b=1#top');
+
+        $this->assertEqual->equal('/a', $both->getPath());
+        $this->assertEqual->equal('b=1', $both->getQuery());
+        $this->assertEqual->equal('top', $both->getFragment());
+    }
 }

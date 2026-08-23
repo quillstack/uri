@@ -66,6 +66,19 @@ $uri->getAuthority();   // 'example.com'
 (string) $uri;          // https://example.com/x
 ```
 
+#### A URI which stops at the host
+
+All of these are URIs, and all of them used to be refused outright:
+
+```php
+$factory->createUri('https://example.org');        // path '/', nothing else
+$factory->createUri('https://example.org?a=1');    // query 'a=1'
+$factory->createUri('https://example.org#top');    // fragment 'top'
+```
+
+The path ends at whichever of `?` and `#` comes first, so a fragment written without a query
+is a fragment rather than the end of a directory name.
+
 #### Changing one
 
 Every change gives back a copy, so the one you were given stays as it was:

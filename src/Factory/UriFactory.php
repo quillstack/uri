@@ -75,6 +75,7 @@ class UriFactory implements UriFactoryInterface
      */
     public function createUri(string $uri = ''): UriInterface
     {
+        $uri = self::withPath($uri);
         $slashArray = $this->getSlashArray($uri);
         $colonArray = $this->getColonArray($uri);
 
@@ -86,6 +87,36 @@ class UriFactory implements UriFactoryInterface
         [$query, $fragment] = $this->getQueryAndFragment($queryWithFragment);
 
         return new Uri($scheme, $userInfo, $host, $port, $query, $path, $fragment);
+    }
+
+    /**
+     * Puts the slash back where a URI was written without one.
+     *
+     * `https://example.org` is a URI with an empty path and every bit as valid as
+     * `https://example.org/`, but this is taken apart by splitting on slashes and there were
+     * only two — so the host could not be found and the whole thing was refused. The same
+     * went for `https://example.org?a=1` and for anything ending at a fragment.
+     */
+    private static function withPath(string $uri): string
+    {
+        $mark = strpos($uri, self::SLASH_DELIMITER . self::SLASH_DELIMITER);
+
+        if ($mark === false) {
+            return $uri;
+        }
+
+        $after = $mark + 2;
+        $rest = substr($uri, $after);
+
+        // Where the authority runs to the end, or straight into a query or a fragment, there
+        // is no path — which is written as the slash it means.
+        $ends = strcspn($rest, self::SLASH_DELIMITER . self::QUERY_STRING_DELIMITER . self::FRAGMENT_DELIMITER);
+
+        if (($rest[$ends] ?? '') === self::SLASH_DELIMITER) {
+            return $uri;
+        }
+
+        return substr($uri, 0, $after + $ends) . self::SLASH_DELIMITER . substr($rest, $ends);
     }
 
     /**
@@ -138,13 +169,17 @@ class UriFactory implements UriFactoryInterface
         $path = $slashArray[3] !== '' ? '/' . $this->implodePath($slashArray) : self::DEFAULT_PATH;
         $query = self::DEFAULT_QUERY;
 
-        if (strstr($path, self::QUERY_STRING_DELIMITER)) {
-            $pathArray = explode(self::QUERY_STRING_DELIMITER, $path);
-            $path = $pathArray[0];
-            $query = $pathArray[1];
+        // The path ends at whichever comes first. Looking only for the question mark left a
+        // fragment written without one — `https://example.org/#top` — stuck on the end of the
+        // path, where it named a directory nobody has.
+        $ends = strcspn($path, self::QUERY_STRING_DELIMITER . self::FRAGMENT_DELIMITER);
+
+        if ($ends < strlen($path)) {
+            $query = substr($path, $path[$ends] === self::QUERY_STRING_DELIMITER ? $ends + 1 : $ends);
+            $path = substr($path, 0, $ends);
         }
 
-        return [$path, $query];
+        return [$path === '' ? self::DEFAULT_PATH : $path, $query];
     }
 
     /**
