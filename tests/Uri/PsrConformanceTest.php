@@ -135,4 +135,19 @@ class PsrConformanceTest
         $this->assertEqual->equal('b=1', $both->getQuery());
         $this->assertEqual->equal('top', $both->getFragment());
     }
+
+    /**
+     * PSR-17 says `new UriFactory()` and nothing about containers, so that has to work: the
+     * validators used to be filled from outside and a factory built by hand died on the first
+     * URI it was given.
+     */
+    public function theFactoryCanBeBuiltByHand()
+    {
+        $uri = (new UriFactory())->createUri('https://example.org/a?b=1#c');
+
+        $this->assertEqual->equal('example.org', $uri->getHost());
+        $this->assertEqual->equal('/a', $uri->getPath());
+        $this->assertEqual->equal('b=1', $uri->getQuery());
+        $this->assertEqual->equal('c', $uri->getFragment());
+    }
 }

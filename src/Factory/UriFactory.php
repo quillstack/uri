@@ -71,6 +71,23 @@ class UriFactory implements UriFactoryInterface
     public UriHostValidator $uriHostValidator;
 
     /**
+     * Neither validator needs anything, so this makes its own where none was given.
+     *
+     * They used to be filled by the container alone, which meant `new UriFactory()` — the
+     * obvious way to write it, and the way anybody reading PSR-17 would — got a factory whose
+     * properties were never set, and died on the first URI it was handed. A component that
+     * cannot be built without a container is one you have to have read the container's
+     * documentation to use at all.
+     */
+    public function __construct(
+        ?UriSchemeValidator $uriSchemeValidator = null,
+        ?UriHostValidator $uriHostValidator = null
+    ) {
+        $this->uriSchemeValidator = $uriSchemeValidator ?? new UriSchemeValidator();
+        $this->uriHostValidator = $uriHostValidator ?? new UriHostValidator();
+    }
+
+    /**
      * {@inheritDoc}
      */
     public function createUri(string $uri = ''): UriInterface

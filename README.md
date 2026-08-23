@@ -21,6 +21,15 @@ A URI taken apart into the pieces an application asks about: which scheme, which
 path, what came after the question mark. Immutable, so handing one to something else cannot
 change the one you kept — every `with…()` gives back a copy.
 
+The factory needs nothing to be built:
+
+```php
+$factory = new UriFactory();
+```
+
+A container can build it instead, and will fill the same two validators; neither way is the one
+you have to use.
+
 ### Requirements
 
 - PHP 8.1 or newer
